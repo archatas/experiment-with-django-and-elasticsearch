@@ -1,0 +1,10 @@
+Django==1.8
+django-bootstrap-pagination==1.6.3
+django-crispy-forms==1.7.0
+django-elasticsearch-dsl==0.4.4
+elasticsearch==5.5.1
+elasticsearch-dsl==5.4.0
+ipaddress==1.0.19
+python-dateutil==2.6.1
+six==1.11.0
+urllib3==1.21.1

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n crispy_forms_tags libraryapp_tags bootstrap_pagination %}
+
+{% block container %}
+    <div class="container">
+        <div class="row">
+            <div id="filter" class="col-md-4">
+                <h3>Filter form</h3>
+                <form method="get" action="{{ request.path }}">
+                    {% crispy form %}
+                    <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
+                </form>
+            </div>
+            <div id="content" class="col-md-8">
+                <h2>Filtered results ({{ object_list.paginator.count }})</h2>
+                {% for book in object_list %}
+                     <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="float-right ml-3"><small>Relevance: {{ book|get_relevance_score|floatformat:"5" }}</small></div>
+                            <strong>
+                                {% if book.meta.highlight.title %}
+                                    {% for fragment in book.meta.highlight.title %}{# Highlighted results. Good to use in descriptions #}
+                                        {{ fragment|safe }}
+                                    {% endfor %}
+                                {% else %}
+                                    {{ book.title }}
+                                {% endif %}
+                                ({{ book.publishing_date|date:"Y" }})
+                            </strong><br />
+                            {% trans "by" %}
+                            {% for author in book.authors %}
+                                {{ author.author_name }}{% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% bootstrap_paginate object_list %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
