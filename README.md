@@ -6,11 +6,11 @@ This Django project explores the possibilities of full-text search and filtering
 
 The project depends on:
 
-- Django >=1.8
-- Elasticsearch 5.6 - Server
-- elasticsearch v5.5.1 - Python Elasticsearch Client
-- elasticsearch-dsl v5.4.0 - Higher level library for the search queries
-- django-elasticsearch-dsl v0.4.4 - Integration with Django package
+- [Django](https://www.djangoproject.com/) ≥ 1.8
+- [Elasticsearch](https://www.elastic.co/products/elasticsearch) 5.6 - Server
+- [elasticsearch](https://github.com/elastic/elasticsearch-py) v5.5.1 - Python Elasticsearch Client
+- [elasticsearch-dsl](https://elasticsearch-dsl.readthedocs.io/en/latest/) v5.4.0 - Higher level library for the search queries
+- [django-elasticsearch-dsl](https://github.com/sabricot/django-elasticsearch-dsl) v0.4.4 - Integration with Django package
 - several other modules listed in the requirements.txt
 
 ## Quickstart
