@@ -1,10 +1,22 @@
-Django==1.8
+-i https://pypi.org/simple
+blessings==1.6.1
+bpython==0.17.1
+certifi==2018.4.16
+chardet==3.0.4
+curtsies==0.3.0
 django-bootstrap-pagination==1.6.3
 django-crispy-forms==1.7.0
 django-elasticsearch-dsl==0.4.4
-elasticsearch==5.5.1
+django==1.8
 elasticsearch-dsl==5.4.0
+elasticsearch==5.5.1
+greenlet==0.4.13
+idna==2.6
 ipaddress==1.0.19
+pygments==2.2.0
 python-dateutil==2.6.1
+requests==2.18.4
 six==1.11.0
+typing==3.6.4
 urllib3==1.21.1
+wcwidth==0.1.7
