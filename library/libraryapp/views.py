@@ -68,11 +68,11 @@ def book_list(request):
 
         title = form.cleaned_data['title']
         if title:
-            search = search.query("fuzzy", title=title)
+            search = search.query("match_phrase", title=title)
 
         isbn = form.cleaned_data['isbn']
         if isbn:
-            search = search.query("match", isbn=isbn)
+            search = search.query("term", isbn=isbn)
 
         authors = form.cleaned_data['authors']
         if authors:

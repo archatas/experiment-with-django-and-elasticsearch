@@ -44,7 +44,7 @@ class BookDocument(DocType):
         'pk': fields.IntegerField(),
     }, include_in_root=True)
 
-    isbn = fields.StringField(
+    isbn = fields.KeywordField(
         index='not_analyzed',
     )
 
@@ -62,6 +62,3 @@ class BookDocument(DocType):
         """If related_models is set, define how to retrieve the Book instance(s) from the related model."""
         if isinstance(related_instance, Author):
             return related_instance.book_set.all()
-
-    def prepare_exact_title(self, obj):
-        return obj.title
