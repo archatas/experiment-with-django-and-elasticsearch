@@ -31,6 +31,7 @@
                             {% for author in book.authors %}
                                 {{ author.author_name }}{% if not forloop.last %},{% endif %}
                             {% endfor %}
+                            {% if book.isbn %}<p>ISBN: {{ book.isbn }}</p>{% endif %}
                         </div>
                     </div>
                 {% endfor %}

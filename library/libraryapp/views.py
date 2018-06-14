@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import operator
 
+from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import render
 from django.core.paginator import Paginator, Page, EmptyPage, PageNotAnInteger
@@ -10,6 +11,7 @@ from django import forms
 
 from crispy_forms import helper
 
+from elasticsearch import TransportError
 from elasticsearch_dsl.query import Q
 
 from .models import Author, Book
@@ -24,6 +26,10 @@ class SearchForm(forms.Form):
     )
     title = forms.CharField(
         label=_("Title"),
+        required=False,
+    )
+    isbn = forms.CharField(
+        label=_("ISBN"),
         required=False,
     )
     authors = forms.ModelMultipleChoiceField(
@@ -64,6 +70,10 @@ def book_list(request):
         if title:
             search = search.query("fuzzy", title=title)
 
+        isbn = form.cleaned_data['isbn']
+        if isbn:
+            search = search.query("match", isbn=isbn)
+
         authors = form.cleaned_data['authors']
         if authors:
             author_queries = []
@@ -88,13 +98,16 @@ def book_list(request):
     paginator = Paginator(search_results, paginate_by)
     page_number = request.GET.get("page")
     try:
-        page = paginator.page(page_number)
-    except PageNotAnInteger:
-        # If page parameter is not an integer, show first page.
-        page = paginator.page(1)
-    except EmptyPage:
-        # If page parameter is out of range, show last existing page.
-        page = paginator.page(paginator.num_pages)
+        try:
+            page = paginator.page(page_number)
+        except PageNotAnInteger:
+            # If page parameter is not an integer, show first page.
+            page = paginator.page(1)
+        except EmptyPage:
+            # If page parameter is out of range, show last existing page.
+            page = paginator.page(paginator.num_pages)
+    except TransportError:
+        raise Http404('Index does not exist. Run `python manage.py search_index --rebuild` to create it.')
 
     context = {
         'object_list': page,

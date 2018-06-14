@@ -26,6 +26,7 @@ class Book(models.Model):
     title = models.CharField(_("Title"), max_length=200)
     authors = models.ManyToManyField(Author, verbose_name=_("Authors"))
     publishing_date = models.DateField(_("Publishing date"), blank=True, null=True)
+    isbn = models.CharField(_("ISBN"), blank=True, max_length=20)
 
     class Meta:
         verbose_name = _("Book")

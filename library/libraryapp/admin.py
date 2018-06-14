@@ -20,10 +20,14 @@ class AuthorAdmin(admin.ModelAdmin):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     save_on_top = True
-    list_display = ["title", "publishing_date"]
+    list_display = ["title", "get_authors", "isbn", "publishing_date"]
     list_filter = ["authors"]
     search_fields = ["title",]
     fieldsets = [
-        (_("Content"), {'fields': ["title", "authors", "publishing_date"]}),
+        (_("Content"), {'fields': ["title", "authors", "isbn", "publishing_date"]}),
     ]
     filter_horizontal = ["authors"]
+
+    def get_authors(self, obj):
+        return ", ".join([author.author_name for author in obj.authors.all()])
+    get_authors.short_description = _("Authors")
