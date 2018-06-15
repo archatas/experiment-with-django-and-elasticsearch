@@ -24,9 +24,9 @@ The project depends on:
 
 2. Clone this project
 
-3. Create a virtual environment, activate it and install Python dependencies
+3. Create a virtual environment, activate it, and install Python dependencies
 
-    - If you use pipenv, go to project's directory and type:
+    - If you use pipenv, go to project's directory and run:
 
         ```
         $ mkdir .venv
@@ -34,7 +34,7 @@ The project depends on:
         $ pipenv shell
         ```
 
-    - Otherwise, type the good old way:
+    - Otherwise, proceed the good old way:
 
         ```
         $ virtualenv venv
