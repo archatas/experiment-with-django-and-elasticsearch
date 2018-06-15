@@ -7,10 +7,10 @@ This Django project explores the possibilities of full-text search and filtering
 The project depends on:
 
 - [Django](https://www.djangoproject.com/) ≥ 1.8
-- [Elasticsearch](https://www.elastic.co/products/elasticsearch) 5.6 - Server
-- [elasticsearch](https://github.com/elastic/elasticsearch-py) v5.5.1 - Python Elasticsearch Client
-- [elasticsearch-dsl](https://elasticsearch-dsl.readthedocs.io/en/latest/) v5.4.0 - Higher level library for the search queries
-- [django-elasticsearch-dsl](https://github.com/sabricot/django-elasticsearch-dsl) v0.4.4 - Integration with Django package
+- [Elasticsearch](https://www.elastic.co/products/elasticsearch) v6.2 - Server
+- [elasticsearch](https://github.com/elastic/elasticsearch-py) v6.2 - Python Elasticsearch Client
+- [elasticsearch-dsl](https://elasticsearch-dsl.readthedocs.io/en/latest/) v6.1 - Higher level library for the search queries
+- [django-elasticsearch-dsl](https://github.com/sabricot/django-elasticsearch-dsl) v0.5.0 - Integration with Django package
 - several other modules listed in the requirements.txt
 
 ## Quickstart
@@ -18,35 +18,40 @@ The project depends on:
 1. Install and run Elasticsearch server. For example on macOS:
 
     ```
-    $ brew install elasticsearch@5.6
-    $ brew services start elasticsearch@5.6
+    $ brew install elasticsearch
+    $ brew services start elasticsearch
     ```
 
-2. Create and activate a virtual environment:
+2. Clone this project
 
-    ```
-    $ virtualenv venv
-    $ . venv/bin/activate
-    ```
- 
-3. Clone this project
+3. Create a virtual environment, activate it and install Python dependencies
 
-4. Install pip requirements into the virtual environment:
+    - If you use pipenv, go to project's directory and type:
 
-    ```
-    (venv)$ pip install -r requirements.txt
-    ```
+        ```
+        $ mkdir .venv
+        $ pipenv install
+        $ pipenv shell
+        ```
 
-5. Build the search index for the database:
+    - Otherwise, type the good old way:
+
+        ```
+        $ virtualenv venv
+        $ source venv/bin/activate
+        (venv)$ pip install -r requirements.txt
+        ```
+
+4. Build the search index for the database:
 
     ```
     (venv)$ python manage.py search_index --rebuild
     ```
 
-6. Run local webserver:
+5. Run local webserver:
 
     ```
     (venv)$ python manage.py runserver
     ```
 
-7. Open http://127.0.0.1:8000 to play around with the search.
+6. Open http://127.0.0.1:8000 to play around with the search.

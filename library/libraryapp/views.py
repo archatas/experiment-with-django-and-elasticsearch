@@ -64,7 +64,12 @@ def book_list(request):
 
         query = form.cleaned_data['query']
         if query:
-            search = search.query("multi_match", query=query, fields=["title", "authors.author_name", "authors.last_name", "authors.first_name"], fuzziness=3)
+            search = search.query(
+                Q('match', title=query) |
+                Q('nested', path="authors", query=Q("match", authors__author_name=query)) |
+                Q('nested', path="authors", query=Q("match", authors__first_name=query)) |
+                Q('nested', path="authors", query=Q("match", authors__last_name=query))
+            )
 
         title = form.cleaned_data['title']
         if title:

@@ -14,28 +14,6 @@ search_index.settings(
 
 
 @search_index.doc_type
-class AuthorDocument(DocType):
-    class Meta:
-        model = Author # The model associated with this DocType
-
-        # The fields of the model you want to be indexed in Elasticsearch
-        fields = [
-            'first_name',
-            'last_name',
-            'author_name',
-        ]
-
-        # Ignore auto updating of Elasticsearch when a model is saved
-        # or deleted:
-        # ignore_signals = True
-        # Don't perform an index refresh after every update (overrides global setting):
-        # auto_refresh = False
-        # Paginate the django queryset used to populate the index with the specified size
-        # (by default there is no pagination)
-        # queryset_pagination = 5000
-
-
-@search_index.doc_type
 class BookDocument(DocType):
     authors = fields.NestedField(properties={
         'first_name': fields.TextField(),
