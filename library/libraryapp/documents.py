@@ -22,9 +22,7 @@ class BookDocument(DocType):
         'pk': fields.IntegerField(),
     }, include_in_root=True)
 
-    isbn = fields.KeywordField(
-        index='not_analyzed',
-    )
+    isbn = fields.KeywordField()
 
     class Meta:
         model = Book # The model associated with this DocType
