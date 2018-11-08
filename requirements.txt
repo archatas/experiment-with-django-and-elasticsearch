@@ -15,7 +15,7 @@ idna==2.7
 ipaddress==1.0.19
 pygments==2.2.0
 python-dateutil==2.6.1
-requests==2.19.1
+requests>=2.20.0
 six==1.11.0
 typing==3.6.4
 urllib3==1.21.1
