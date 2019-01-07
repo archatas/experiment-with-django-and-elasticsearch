@@ -18,5 +18,5 @@ python-dateutil==2.6.1
 requests>=2.20.0
 six==1.11.0
 typing==3.6.4
-urllib3==1.21.1
+urllib3==1.23
 wcwidth==0.1.7
