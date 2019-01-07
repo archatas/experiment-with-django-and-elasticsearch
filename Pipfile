@@ -12,7 +12,7 @@ ipaddress = "==1.0.19"
 python-dateutil = "==2.6.1"
 six = "==1.11.0"
 "urllib3" = "==1.21.1"
-Django = "==1.8"
+Django = "==1.8.19"
 bpython = "*"
 django-elasticsearch-dsl = "*"
 
