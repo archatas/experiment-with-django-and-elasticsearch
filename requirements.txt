@@ -1,22 +1,22 @@
--i https://pypi.org/simple
-blessings==1.6.1
+-i https://pypi.org/simple/
+blessings==1.7
 bpython==0.17.1
-certifi==2018.4.16
+certifi==2019.9.11
 chardet==3.0.4
 curtsies==0.3.0
 django-bootstrap-pagination==1.6.3
 django-crispy-forms==1.7.0
-django-elasticsearch-dsl==0.5.0
+django-elasticsearch-dsl==0.5.1
 django==1.8.19
 elasticsearch-dsl==6.1.0
-elasticsearch==6.2.0
-greenlet==0.4.13
-idna==2.7
+elasticsearch==6.4.0
+greenlet==0.4.15
+idna==2.8
 ipaddress==1.0.19
-pygments==2.2.0
+pygments==2.4.2
 python-dateutil==2.6.1
-requests>=2.20.0
+requests==2.22.0
 six==1.11.0
-typing==3.6.4
-urllib3==1.23
+typing==3.7.4.1
+urllib3==1.24.2
 wcwidth==0.1.7
